@@ -1,6 +1,6 @@
 # HAR-using-Federated-Learning
 
-This project falls into the scope of ‘Human Activity Recognition’ using Federated Learning. Human Activity
+It is a multi-class classification problem and it falls into the scope of ‘Human Activity Recognition’ using Federated Learning. Human Activity
 Recognition itself proposes different advantages. The portable based wellbeing applications can be a
 recipient for the old and infected people to recuperate quickly from any injury or forestall any mishaps. This
 dataset is our essential decision since now-a-days everybody has a smartphone and they track their
@@ -57,23 +57,36 @@ evaluate accuracy.
 
 ## Model Architechture
 
+Layer Type | Specifics 
+-----------|----------
+Input Layer | Number of units dependent on size of training set
+Dense Layer | 256 units, ReLU activation
+Dropout | probability 0.2
+Dense Layer | 128 units, ReLU activation
+Dropout | probability 0.2
+Dense Layer | 64 units, ReLU activation
+Dropout | probability 0.2
+Dense Layer | 32 units, ReLU activation
+Output Layer | 6 units(Number of classes), Softmax activation
+
 ## Weight function
 
-To serve our purpose we used a simple weighted average of the weights of the three local model replicas.
-First we started off with equal weights i.e, [1, 1, 1]. This permutation performed averagely giving a global
-model accuracy on the public set to be around 85%. We further tweaked the array to other values like
-[5,2,3], [10,5,5], [10,2,3], etc. But we only got sub-par accuracy ranging between 85% to 90% with average
-to poor consistency. Finally after further tweaking we settled for the weight array [1, 0.02, 0.03]. This array
+To serve the purpose I used a simple weighted average of the weights of the three local model replicas.
+First I started off with equal weights i.e, [1, 1, 1]. This permutation performed averagely giving a global
+model accuracy on the public set to be around 85%. I further tweaked the array to other values like
+[5,2,3], [10,5,5], [10,2,3], etc; But only got sub-par accuracy ranging between 85% to 90% with average
+to poor consistency. Finally after further tweaking I settled for the weight array [1, 0.02, 0.03]. This array
 gave better consistency but still the accuracy of the model was below 90%. To further increase the accuracy
-of the global model on the public dataset we dynamically assigned the weights by closely monitoring the
+of the global model on the public dataset I dynamically assigned the weights by closely monitoring the
 private model accuracies and accordingly distributed the weights.
 
-Following this procedure of weight selection and using the weighted average function to set the weights we
+Following this procedure of weight selection and using the weighted average function to set the weights I
 achieved the best accuracy of 91.35% with good consistency throughout multiple runs of the models.
-Actuaries were constantly hitting greater than 88% mark throughout our further testing and simulations.
+Accuracies were constantly hitting greater than 88% mark throughout my further testing and simulations.
 
-<u>Weight function equation-</u>
-weights_global model = ( w1 * weights_model−1 + w2 * weights_model−2 + w3 * weights_model−3 ) / (w1 + w2 + w 3 )
+<ins>Weight function equation-</ins>
+
+weights<sub>global model</sub> = ( w1 * weights<sub>model−1</sub> + w2 * weights<sub>model−2</sub> + w3 * weights<sub>model−3</sub> ) / (w1 + w2 + w 3 )
 
 Where [w1, w2, w3] is some permutation of [1, 0.02, 0.03] based on the private model accuracies.
 This also seems natural because you want to give more weightage to the model which has higher accuracy.
@@ -91,4 +104,4 @@ to start downloading.
 5. Copy and past the jupyter notebook(code) uploaded via the google forms inside the ‘Project’ folder.
 6. Open the notebook and run all cells.
 
-If you find any issues or have problems running the code feel free to contact me via linkedin/e-mail (Linkedin preffered).
+**If you find any issues or have problems running the code feel free to contact me via linkedin/e-mail (Linkedin preferred).**
