@@ -19,8 +19,8 @@ Federated Learning we can stay away from the information security/data privacy c
 time-series based dataset of 10299 instances built from the recordings of 30 subjects performing daily-life
 activities(ADL) while carrying a waist-mounted smartphone with embedded inertial sensors, with emphasis
 on the output task of Classification or Clustering.The experiments have been carried out with a group of 30
-volunteers within an age bracket of 19-48 years. Each person performed six activities (​ WALKING,
-WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING​ ) wearing a
+volunteers within an age bracket of 19-48 years. Each person performed six activities ( WALKING,
+WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING ) wearing a
 smartphone on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear
 acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been
 video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets,
@@ -49,11 +49,13 @@ but they belonged to different subjects so were inherently different. This was h
 column name with a number.
 
 Further I shuffled the dataset to remove any correlation that may exist between the data points related to one individual.
-This was crucial as because the private datasets were only accessible in a particular local model(model
-replica ‘i’) and only the trained model weights were used to calculate the weights of the global model and
+This was crucial as because the private datasets were only accessible in a particular local model(model<sub>i</sub>) and 
+only the trained model weights were used to calculate the weights of the global model and
 evaluate accuracy.
 
 ## Visualizing the data
+
+![Activities](images/data_1.png)
 
 ## Model Architechture
 
